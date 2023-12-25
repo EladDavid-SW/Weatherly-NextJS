@@ -27,10 +27,10 @@ export default function Home() {
   return (
     <div>
       <CenteredContent>
-        <div>
-          <SearchBar onSearch={fetchWeatherData} />
-          <WeatherContent data={weatherData} />
-        </div>
+        <img src='https://as1.ftcdn.net/v2/jpg/05/70/32/88/1000_F_570328831_s8s78q32KxSh6uzusauMPlSeRFsKER7P.webp' alt='Weatherly Logo' className='logo' />
+        <h1 className='title'>Weatherly</h1>
+        <SearchBar onSearch={fetchWeatherData} />
+        <WeatherContent data={weatherData} />
       </CenteredContent>
     </div>
   )
