@@ -1,0 +1,95 @@
+.weatherContainer {
+  background: #5CA6CD; 
+  color: white;
+  font-family: 'Arial', sans-serif;
+  max-width: 820px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dateInfo {
+  font-size: 1rem; 
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.location h1 {
+  font-size: 1.5rem; 
+  font-weight: bold;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.weatherStatus p {
+  font-size: 1.1rem; 
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.temperature h2 {
+  font-size: 3rem; 
+  font-weight: bold;
+  color: white; 
+  text-align: center;
+  margin: 10px 0;
+}
+
+.weatherContent {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.leftSide, .rightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 3%;
+}
+
+.mainInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.weatherIcon {
+  padding: 20px;
+}
+
+.icon, .weatherIcon img {
+  margin-right: 8px;
+}
+
+.sunTimes {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 820px) {
+  .weatherContainer {
+    width: 90%;
+    padding: 10px;
+  }
+  
+  .weatherContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .leftSide, .rightSide {
+    align-items: center;
+  }
+}
