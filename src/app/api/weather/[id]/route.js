@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from "next/server";
 
 const fetchGoogleData = async (locationInput) => {
   const googleUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationInput)}&key=${process.env.GOOGLE_API_KEY}`
@@ -15,14 +15,14 @@ const fetchGoogleData = async (locationInput) => {
     .catch((error) => {
       console.error('Error:', error)
     })
-  const weatherData = fetchWeatherData(result.location.lat, result.location.lng)
+  const weatherData = await fetchWeatherData(result.location.lat, result.location.lng)
   result.weatherData = weatherData
   return result
 }
 
 const fetchWeatherData = async (lat, lon) => {
   let weatherData
-  await fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}`)
+  await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data)
@@ -32,7 +32,8 @@ const fetchWeatherData = async (lat, lon) => {
   return weatherData
 }
 
-export async function GET() {
-  let data = await fetchGoogleData('tel aviv')
+export async function GET(req, { params }) {
+  const id = params.id
+  let data = await fetchGoogleData(id)
   return NextResponse.json(data)
 }
