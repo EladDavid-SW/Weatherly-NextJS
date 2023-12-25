@@ -1,0 +1,32 @@
+.searchBarContainer {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.searchInput {
+  flex-grow: 1;
+  border: none;
+  margin-right: 1rem;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 15px;
+  outline: none;
+}
+
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.searchButton img {
+  width: 24px;
+  height: 24px;
+}

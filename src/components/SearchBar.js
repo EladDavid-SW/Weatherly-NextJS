@@ -1,25 +1,32 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react';
+import styles from '@/styles/SearchBar.module.css'; 
+import Image from 'next/image'
 
 const SearchBar = ({ onSearch }) => {
-  const [searchData, setSearchData] = useState('')
-  useEffect(() => {
-    console.log(searchData)
-  }, [searchData])
+  const [searchData, setSearchData] = useState('');
 
-  const handleSearchChange = async (event) => {
-    const searchText = await event.target.value
-    setSearchData(searchText)
-  }
+  const handleSearchChange = (event) => {
+    setSearchData(event.target.value);
+  };
+
   const handleSubmit = () => {
-    onSearch(searchData)
-  }
-
+    onSearch(searchData);
+  };
 
   return (
-    <div>
-      <input type='text' placeholder='Enter city' onChange={handleSearchChange} />
-      <button onClick={handleSubmit}>submit</button>
+    <div className={styles.searchBarContainer}>
+      <input
+        type="text"
+        placeholder="Enter a city"
+        value={searchData}
+        onChange={handleSearchChange}
+        className={styles.searchInput}
+      />
+       <button onClick={handleSubmit} className={styles.searchButton}>
+       <Image src={`/icons/search.png`} alt='search' width='20' height='20'  />
+      </button>
     </div>
-  )
-}
-export default SearchBar
+  );
+};
+
+export default SearchBar;
