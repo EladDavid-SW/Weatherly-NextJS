@@ -40,4 +40,4 @@ Before you begin, ensure you have met the following requirements:
 
 ## Usage
 
-Enter a city name into the search bar and press the search button or hit enter to view the weather.
+Enter a city name into the search bar and press the search button to view the weather.
