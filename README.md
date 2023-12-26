@@ -3,6 +3,8 @@
 
 Weatherly is a web application that provides real-time weather information for any location. It's designed to be simple, fast, and easy to use.
 
+Try it out: [Weatherly Live Website](https://main--calm-ganache-7f564a.netlify.app/)
+
 ## Features
 
 - Search for weather by city.
