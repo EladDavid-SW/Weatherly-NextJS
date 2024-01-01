@@ -28,11 +28,12 @@ const WeatherContent = ({ data }) => {
     if (data) {
       setWeatherData({ ...weatherData, ...data })
     }
-    const currentDate = new Date()
-    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-    const timeOptions = { hour: '2-digit', minute: '2-digit' }
-    const localTime = currentDate.toLocaleTimeString([], timeOptions)
-    setFullDateDisplay(`${currentDate.toLocaleDateString('en-US', dateOptions)} | Your Local time: ${localTime}`)
+    const currentDate = new Date();
+const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: false, hourCycle: 'h23' };
+const localTime = currentDate.toLocaleTimeString([], timeOptions);
+setFullDateDisplay(`${currentDate.toLocaleDateString('en-US', dateOptions)} | Your Local time: ${localTime}`);
+
   }, [data])
 
   // Determine which weather icon to use
