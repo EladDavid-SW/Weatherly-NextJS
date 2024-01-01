@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import moment from 'moment-timezone';
 
 const fetchGoogleData = async (locationInput) => {
   const googleUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationInput)}&key=${process.env.GOOGLE_API_KEY}`
@@ -22,14 +23,15 @@ const fetchWeatherData = async (lat, lon, locationName, countryName) => {
   try {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.WEATHER_API_KEY}`)
     const data = await response.json()
+    const textData = JSON.stringify(data)
 
     const kelvinToCelsius = (kelvin) => Math.round(kelvin - 273.15)
 
-    const convertUnixTimeToLocal = (unixTime, timezoneOffset) => {
-      const localTime = new Date((unixTime + timezoneOffset) * 1000)
-      return localTime.toLocaleTimeString('en-IL', { hour: '2-digit', minute: '2-digit' })
+    const convertUnixTimeToLocal = (unixTime, timezoneOffsetInSeconds) => {
+      let date = moment.utc(unixTime, 'X').add(timezoneOffsetInSeconds, 'seconds');
+      return date.format('HH:mm'); 
     }
-
+    
     return {
       locationName: data.name,
       countryCode: data.sys.country,
@@ -58,9 +60,6 @@ export async function GET(req, { params }) {
   let locationData = await fetchGoogleData(id)
 
   const weatherData = await fetchWeatherData(locationData.location.lat, locationData.location.lng)
-
-  console.log(weatherData)
-
   return NextResponse.json(weatherData)
   
 }
